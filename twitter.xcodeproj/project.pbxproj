@@ -21,6 +21,7 @@
 		9520E9B028624950000072EA /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9520E9AF28624950000072EA /* Tweet.m */; };
 		95251CC628626328008625CF /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95251CC528626328008625CF /* TweetCell.m */; };
 		95251CC828627841008625CF /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95251CC728627841008625CF /* TimelineViewController.m */; };
+		95251CCE28639130008625CF /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95251CCD28639130008625CF /* ComposeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		95251CC428626328008625CF /* TweetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
 		95251CC528626328008625CF /* TweetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
 		95251CC728627841008625CF /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
+		95251CCC28639130008625CF /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		95251CCD28639130008625CF /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,8 @@
 				6AD278D820BC4B950085BC29 /* AppDelegate.h */,
 				6AD278D920BC4B950085BC29 /* AppDelegate.m */,
 				6AD278DE20BC4B950085BC29 /* Main.storyboard */,
+				95251CCC28639130008625CF /* ComposeViewController.h */,
+				95251CCD28639130008625CF /* ComposeViewController.m */,
 				95251CC428626328008625CF /* TweetCell.h */,
 				95251CC528626328008625CF /* TweetCell.m */,
 				6AD278E120BC4B970085BC29 /* Assets.xcassets */,
@@ -256,6 +261,7 @@
 				95251CC628626328008625CF /* TweetCell.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
 				95251CC828627841008625CF /* TimelineViewController.m in Sources */,
+				95251CCE28639130008625CF /* ComposeViewController.m in Sources */,
 				9520E9AD28624876000072EA /* User.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
 				9520E9B028624950000072EA /* Tweet.m in Sources */,

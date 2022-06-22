@@ -12,8 +12,10 @@
 #import "AppDelegate.h"
 #import "TweetCell.h"
 #import "Tweet.h"
+#import "ComposeViewController.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface TimelineViewController ()<UITableViewDataSource,UITableViewDelegate, UIScrollViewDelegate>
+@interface TimelineViewController () <ComposeViewControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tweetsArray;
 
@@ -21,6 +23,7 @@
 
 
 @implementation TimelineViewController
+
 - (IBAction)didTapLogout:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 
@@ -53,7 +56,6 @@
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
-    
     
 }
 
@@ -107,14 +109,16 @@
              [refreshControl endRefreshing];
         }];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+    composeController.delegate = self;
 }
-*/
+
+
+//#pragma mark - Navigation
+//
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+
 
 @end

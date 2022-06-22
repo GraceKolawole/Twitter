@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UILabel *tweetTextLabel;
 @property (strong, nonatomic) Tweet *tweet;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @end
 
 NS_ASSUME_NONNULL_END
