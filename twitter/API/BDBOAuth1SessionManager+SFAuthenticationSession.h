@@ -50,4 +50,5 @@
  */
 - (BOOL)logout;
 
+- (BOOL)edit;
 @end

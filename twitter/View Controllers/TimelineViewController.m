@@ -34,9 +34,19 @@
     [[APIManager shared] logout];
 }
 
-- (IBAction)didTapTweet:(id)sender {
-    
+- (IBAction)didTapEdit:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ComposeViewController *ComposeViewController = [storyboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
+    appDelegate.window.rootViewController = ComposeViewController;
+//    [UIApplication sharedApplication].delegate;
+    [[APIManager shared] edit];
 }
+
+//- (IBAction)didTap:(id)sender {
+//
+//}
 
 
 - (void)viewDidLoad {

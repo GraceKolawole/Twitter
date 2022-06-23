@@ -94,6 +94,10 @@
     return [self deauthorize];
 }
 
+- (BOOL)edit {
+    return [self deauthorize];
+}
+
 static void *BDBOAuth1SessionManagerAuthenticationSessionKey = &BDBOAuth1SessionManagerAuthenticationSessionKey;
 
 - (SFAuthenticationSession *)authenticationSession {
