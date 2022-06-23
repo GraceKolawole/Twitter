@@ -15,12 +15,12 @@
 #import "ComposeViewController.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface TimelineViewController () <ComposeViewControllerDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tweetsArray;
 
 @end
-
+//
 
 @implementation TimelineViewController
 
@@ -33,21 +33,6 @@
 //    [UIApplication sharedApplication].delegate;
     [[APIManager shared] logout];
 }
-
-- (IBAction)didTapEdit:(id)sender {
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ComposeViewController *ComposeViewController = [storyboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
-    appDelegate.window.rootViewController = ComposeViewController;
-//    [UIApplication sharedApplication].delegate;
-    [[APIManager shared] edit];
-}
-
-//- (IBAction)didTap:(id)sender {
-//
-//}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -82,6 +67,12 @@
     cell.tweetTextLabel.text=tweet.text;
     cell.userLabel.text=tweet.user.name;
     cell.usernameLabel.text=tweet.user.screenName;
+    
+    NSString* retweetString = [[NSString alloc] initWithFormat:@"%d", tweet.retweetCount];
+    NSString* likeString = [[NSString alloc] initWithFormat:@"%d", tweet.favoriteCount];
+    
+    [cell.retweetBotton setTitle:retweetString forState:UIControlStateNormal];
+    [cell.favoriteButton setTitle:likeString forState:UIControlStateNormal];
     
     NSString *URLString = tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
@@ -138,5 +129,9 @@
 //
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 
+
+- (void)didTweet:(nonnull Tweet *)tweet {
+    
+}
 
 @end
