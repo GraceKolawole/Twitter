@@ -12,7 +12,10 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
-
+    
+//    [button setTitle:@"favoriteCount" forState:UIControlStateNormal];
+//    [button setTitle:@"retweetCount" forState:UIControlStateNormal];
+    
     if (self) {
         self.name = dictionary[@"name"];
         self.screenName = dictionary[@"screen_name"];
