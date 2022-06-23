@@ -12,6 +12,13 @@
 #import "DateTools.h"
 
 @implementation TweetCell
+- (IBAction)didTapRetweet:(id)sender {
+    self.tweet.retweeted =YES;
+    self.tweet.retweetCount +=1;
+    [self.retweetBotton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
+    
+  
+}
 - (IBAction)didTapFavorite:(id)sender {
     
     self.tweet.favorited = YES;

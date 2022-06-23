@@ -101,6 +101,9 @@
                                                     <rect key="frame" x="279" y="159" width="61" height="28"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="retweet-icon"/>
+                                                    <connections>
+                                                        <action selector="didTapRetweet:" destination="Q9A-nm-XVG" eventType="touchUpInside" id="rJN-2z-Sir"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riE-mq-x5M">
                                                     <rect key="frame" x="305" y="6.5" width="46" height="23"/>
@@ -128,6 +131,7 @@
                                                     <state key="normal" image="favor-icon"/>
                                                     <connections>
                                                         <action selector="didTapFavorite:" destination="Q9A-nm-XVG" eventType="touchUpInside" id="smV-oF-phP"/>
+                                                        <action selector="didTapUnfavorite:" destination="Q9A-nm-XVG" eventType="touchUpInside" id="Eya-Rw-Z0w"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -157,6 +161,7 @@
                                             <outlet property="dateLabel" destination="riE-mq-x5M" id="DKX-3H-0G1"/>
                                             <outlet property="favoriteButton" destination="7M0-bz-rcJ" id="q8u-9t-YjV"/>
                                             <outlet property="profilePictureImageView" destination="21g-qP-cXR" id="beu-lw-ILo"/>
+                                            <outlet property="retweetBotton" destination="g9z-Kd-wGI" id="Lh6-pw-Vip"/>
                                             <outlet property="tweetTextLabel" destination="dng-Il-MLK" id="rob-Yi-IoH"/>
                                             <outlet property="userLabel" destination="wdF-T6-igJ" id="kye-5s-D0h"/>
                                             <outlet property="usernameLabel" destination="MZt-lu-VrF" id="hFn-AG-TDW"/>
@@ -194,7 +199,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                             <connections>
-                                <action selector="tweet:" destination="waR-Yu-pWq" id="VhC-m6-0jL"/>
+                                <action selector="didTapTweet:" destination="Lbl-k5-U4i" id="gND-q9-A3N"/>
                                 <segue destination="NLE-n5-pfz" kind="presentation" id="Z5a-Wn-3lq"/>
                             </connections>
                         </barButtonItem>
@@ -204,7 +209,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="waR-Yu-pWq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1696.8" y="35.532233883058474"/>
         </scene>

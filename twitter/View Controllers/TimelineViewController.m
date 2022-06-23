@@ -34,6 +34,11 @@
     [[APIManager shared] logout];
 }
 
+- (IBAction)didTapTweet:(id)sender {
+    
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.dataSource = self;
