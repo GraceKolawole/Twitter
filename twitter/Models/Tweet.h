@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
+#import "DateTools.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

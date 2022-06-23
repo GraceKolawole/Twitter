@@ -45,7 +45,7 @@
 //  Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
-            NSLog(@"😎😎😎 Successfully loaded home timeline");
+            NSLog(@"text😎😎😎 Successfully loaded home timeline");
             for (Tweet *tweet in tweets) {
                 NSString *text = tweet.text;
                 NSLog(@"%@", text);
@@ -72,6 +72,9 @@
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     cell.profilePictureImageView.image= [UIImage imageWithData:urlData];
+    
+    cell.dateLabel.text = tweet.createdAtString;
+    
     return cell;
     
 }
