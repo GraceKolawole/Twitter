@@ -27,32 +27,67 @@
 
 
 @implementation DetailViewController
+
 - (IBAction)didTapFavorite:(id)sender {
-    self.tweet.favorited = YES;
-    self.tweet.favoriteCount +=1;
-    //todo : update fav text
-    [self.favoriteBotton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
-    
-    NSString *favoriteCount = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
-            [self.favoriteBotton setTitle:favoriteCount forState:UIControlStateNormal];
-    
-    [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
-        if(error){
-             NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+    if (self.tweet.favorited){
+        self.tweet.favorited = NO;
+        self.tweet.favoriteCount -=1;
+        //todo : update fav text
+        [self.favoriteBotton setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
+        
+        NSString *favoriteCount = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
+                [self.favoriteBotton setTitle:favoriteCount forState:UIControlStateNormal];
+        
+        [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if(error){
+                 NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+            }
+            else{
+                NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+            }
+        }];
+        
+    }
+        else
+        {
+            self.tweet.favorited = YES;
+            self.tweet.favoriteCount +=1;
+            //todo : update fav text
+            [self.favoriteBotton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
+            
+            NSString *favoriteCount = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
+                    [self.favoriteBotton setTitle:favoriteCount forState:UIControlStateNormal];
+            
+            [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+                if(error){
+                     NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+                }
+                else{
+                    NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+                }
+            }];
+            
         }
-        else{
-            NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
-        }
-    }];
+    }
     
-}
 - (IBAction)didTapRetweet:(id)sender {
-    self.tweet.retweeted =YES;
-    self.tweet.retweetCount +=1;
-    [self.retweetBotton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
-    
-    NSString *retweetCount = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
-            [self.retweetBotton setTitle:retweetCount forState:UIControlStateNormal];
+    if(self.tweet.retweeted){
+        self.tweet.retweeted=NO;
+        self.tweet.retweetCount -=1;
+        [self.retweetBotton setImage:[UIImage imageNamed:@"retweet-icon"] forState:UIControlStateNormal];
+        
+        NSString *retweetCount = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
+                [self.retweetBotton setTitle:retweetCount forState:UIControlStateNormal];
+    }
+    else{
+        self.tweet.retweeted=YES;
+        self.tweet.retweetCount +=1;
+        [self.retweetBotton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
+        
+        NSString *retweetCount = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
+                [self.retweetBotton setTitle:retweetCount forState:UIControlStateNormal];
+    }
+   
 }
 
 - (void)viewDidLoad {
