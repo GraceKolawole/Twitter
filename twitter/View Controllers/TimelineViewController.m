@@ -18,7 +18,7 @@
 @interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tweetsArray;
-
+@property(nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 //
 
@@ -42,7 +42,27 @@
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:refreshControl atIndex:0];
     
-//  Get timeline
+////  Get timeline
+//    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
+//        if (tweets) {
+//            NSLog(@"text😎😎😎 Successfully loaded home timeline");
+//            for (Tweet *tweet in tweets) {
+//                NSString *text = tweet.text;
+//                NSLog(@"%@", text);
+//            }
+//            self.tweetsArray = (NSMutableArray *)tweets;
+//            [self.tableView reloadData];
+//        } else {
+//            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+//        }
+//    }];
+    [self fetchTweets];
+        self.refreshControl = [[UIRefreshControl alloc] init];//connects refreshcontrol to self
+        [self.refreshControl addTarget:self action: @selector(fetchTweets) forControlEvents:UIControlEventValueChanged];//when beginning of refresh control is triggered it reruns fetchMovies
+        self.tableView.refreshControl = self.refreshControl;//end of refreshControl
+}
+
+-(void)fetchTweets{
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"text😎😎😎 Successfully loaded home timeline");
@@ -58,16 +78,6 @@
     }];
     
 }
-
-//[self fetchTweets];
-//    self.refreshControl = [[UIRefreshControl alloc] init];//connects refreshcontrol to self
-//    [self.refreshControl addTarget:self action: @selector(fetchTweets) forControlEvents:UIControlEventValueChanged];//when beginning of refresh control is triggered it reruns fetchMovies
-//    self.timelineTableView.refreshControl = self.refreshControl;//end of refreshControl
-//
-//
-//-(void)freshtweet{
-//    
-//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
@@ -143,6 +153,9 @@
 
 - (void)didTweet:(nonnull Tweet *)tweet {
     [self.tweetsArray insertObject:tweet atIndex:0];
+    [self.tableView reloadData];
+    
+    
 }
 
 @end

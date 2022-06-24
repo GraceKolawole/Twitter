@@ -74,7 +74,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="229" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0o1-44-33Y">
-                                <rect key="frame" x="0.0" y="-13" width="390" height="803"/>
+                                <rect key="frame" x="0.0" y="79" width="390" height="711"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <prototypes>
@@ -118,8 +118,8 @@
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7M0-bz-rcJ">
-                                                    <rect key="frame" x="127" y="172" width="54" height="44"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7M0-bz-rcJ">
+                                                    <rect key="frame" x="142" y="172" width="54" height="44"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="favor-icon"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="favor-icon" title=""/>
@@ -139,8 +139,8 @@
                                                         <action selector="didTapFavorite:" destination="Q9A-nm-XVG" eventType="touchUpInside" id="3XL-mr-9z7"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9z-Kd-wGI">
-                                                    <rect key="frame" x="224" y="174" width="54" height="44"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9z-Kd-wGI">
+                                                    <rect key="frame" x="239" y="174" width="54" height="44"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="retweet-icon"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="retweet-icon" title=""/>
@@ -176,7 +176,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="g9z-Kd-wGI" secondAttribute="bottom" constant="11" id="Y3G-FY-fju"/>
                                                 <constraint firstAttribute="bottom" secondItem="qIL-VB-KaZ" secondAttribute="bottom" constant="19" id="ZDo-Zm-S0H"/>
                                                 <constraint firstItem="21g-qP-cXR" firstAttribute="leading" secondItem="LHp-QH-cHN" secondAttribute="leading" constant="8" id="aEo-sI-lkP"/>
-                                                <constraint firstItem="7M0-bz-rcJ" firstAttribute="leading" secondItem="qIL-VB-KaZ" secondAttribute="trailing" constant="47" id="cgY-Or-Nib"/>
+                                                <constraint firstItem="7M0-bz-rcJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qIL-VB-KaZ" secondAttribute="trailing" constant="47" id="cgY-Or-Nib"/>
                                                 <constraint firstItem="csW-M5-SCj" firstAttribute="leading" secondItem="g9z-Kd-wGI" secondAttribute="trailing" constant="60" id="fLa-b8-IZQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="dng-Il-MLK" secondAttribute="trailing" constant="16" id="fnx-S2-0zq"/>
                                                 <constraint firstItem="qIL-VB-KaZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dng-Il-MLK" secondAttribute="bottom" constant="8" id="fxu-wF-OmG"/>
@@ -205,7 +205,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0o1-44-33Y" firstAttribute="leading" secondItem="ugE-Ul-H9I" secondAttribute="leading" id="CEv-FU-QA8"/>
-                            <constraint firstItem="0o1-44-33Y" firstAttribute="top" secondItem="qax-2F-Vhk" secondAttribute="top" constant="-13" id="Pza-uV-zQQ"/>
+                            <constraint firstItem="0o1-44-33Y" firstAttribute="top" secondItem="qax-2F-Vhk" secondAttribute="top" constant="79" id="Pza-uV-zQQ"/>
                             <constraint firstItem="0o1-44-33Y" firstAttribute="trailing" secondItem="ugE-Ul-H9I" secondAttribute="trailing" id="UPa-DJ-OaA"/>
                             <constraint firstAttribute="bottom" secondItem="0o1-44-33Y" secondAttribute="bottom" id="tgb-6f-vup"/>
                         </constraints>
@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1696.8" y="35.532233883058474"/>
+            <point key="canvasLocation" x="1695.3846153846152" y="34.834123222748815"/>
         </scene>
         <!--Compose View Controller-->
         <scene sceneID="Qpz-Qv-bbc">
