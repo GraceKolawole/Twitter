@@ -16,8 +16,15 @@
     self.tweet.retweeted =YES;
     self.tweet.retweetCount +=1;
     [self.retweetBotton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
+//    [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+//        if(self){
+//             NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+//        }
+//        else{
+//            NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+//        }
+//    }];
     
-  
 }
 - (IBAction)didTapFavorite:(id)sender {
     
