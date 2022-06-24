@@ -57,6 +57,8 @@
         self.tableView.refreshControl = self.refreshControl;//end of refreshControl
     
     [self.tableView insertSubview:refreshControl atIndex:0];
+    
+
 }
 
 -(void)fetchTweets{
