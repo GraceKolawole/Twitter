@@ -16,15 +16,10 @@
     self.tweet.retweeted =YES;
     self.tweet.retweetCount +=1;
     [self.retweetBotton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
-//    [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
-//        if(self){
-//             NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
-//        }
-//        else{
-//            NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
-//        }
-//    }];
     
+    NSString *retweetCount = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
+            [self.retweetBotton setTitle:retweetCount forState:UIControlStateNormal];
+
 }
 - (IBAction)didTapFavorite:(id)sender {
     
@@ -32,6 +27,9 @@
     self.tweet.favoriteCount +=1;
     //todo : update fav text
     [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
+    
+    NSString *favoriteCount = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
+            [self.favoriteButton setTitle:favoriteCount forState:UIControlStateNormal];
     [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
         if(error){
              NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
@@ -52,7 +50,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 
 @end

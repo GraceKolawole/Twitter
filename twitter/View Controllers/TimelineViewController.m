@@ -18,13 +18,15 @@
 
 @interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property (nonatomic, strong) NSMutableArray *tweetsArray;
 @property(nonatomic, strong) UIRefreshControl *refreshControl;
+
 @end
-//
 
 
 @implementation TimelineViewController
+
 
 - (IBAction)didTapLogout:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -36,32 +38,25 @@
     [[APIManager shared] logout];
 }
 
+- (void)didTweet:(nonnull Tweet *)tweet {
+    [self.tweetsArray insertObject:tweet atIndex:0];
+    [self.tableView reloadData];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.dataSource = self;
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:refreshControl atIndex:0];
-    
-////  Get timeline
-//    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
-//        if (tweets) {
-//            NSLog(@"text😎😎😎 Successfully loaded home timeline");
-//            for (Tweet *tweet in tweets) {
-//                NSString *text = tweet.text;
-//                NSLog(@"%@", text);
-//            }
-//            self.tweetsArray = (NSMutableArray *)tweets;
-//            [self.tableView reloadData];
-//        } else {
-//            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
-//        }
-//    }];
+
     [self fetchTweets];
         self.refreshControl = [[UIRefreshControl alloc] init];//connects refreshcontrol to self
-        [self.refreshControl addTarget:self action: @selector(fetchTweets) forControlEvents:UIControlEventValueChanged];//when beginning of refresh control is triggered it reruns fetchMovies
+        [self.refreshControl addTarget:self action: @selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
         self.tableView.refreshControl = self.refreshControl;//end of refreshControl
+    
+    [self.tableView insertSubview:refreshControl atIndex:0];
 }
 
 -(void)fetchTweets{
@@ -78,6 +73,7 @@
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
+        [self.refreshControl endRefreshing];
     }];
     
 }
@@ -93,10 +89,13 @@
     cell.usernameLabel.text=tweet.user.screenName;
     
     NSString* retweetString = [[NSString alloc] initWithFormat:@"%d", tweet.retweetCount];
-    NSString* likeString = [[NSString alloc] initWithFormat:@"%d", tweet.favoriteCount];
-    
     [cell.retweetBotton setTitle:retweetString forState:UIControlStateNormal];
+    
+    NSString* likeString = [[NSString alloc] initWithFormat:@"%d", tweet.favoriteCount];
     [cell.favoriteButton setTitle:likeString forState:UIControlStateNormal];
+    
+    
+    
     
     NSString *URLString = tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
@@ -142,6 +141,7 @@
              [refreshControl endRefreshing];
         }];
 }
+#pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"ComposeSegue"]) {
@@ -159,9 +159,5 @@
     }
 }
 
-- (void)didTweet:(nonnull Tweet *)tweet {
-    [self.tweetsArray insertObject:tweet atIndex:0];
-    [self.tableView reloadData];
-}
 
 @end
