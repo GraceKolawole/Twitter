@@ -23,6 +23,7 @@
     
     self.tweet.favorited = YES;
     self.tweet.favoriteCount +=1;
+    //todo : update fav text
     [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
     [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
         if(error){

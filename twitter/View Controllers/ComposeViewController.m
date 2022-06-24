@@ -18,16 +18,21 @@
 - (IBAction)closeBotton:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }
+- (IBAction)tweetBotton:(id)sender {
+    [[APIManager shared]postStatusWithText:self.textView.text completion:^(Tweet *tweet, NSError *error) {
+          if(error){
+              NSLog(@"Error composing Tweet: %@", error.localizedDescription);
+          }
+          else{
+              [self.delegate didTweet:tweet];
+              NSLog(@"Compose Tweet Success!");
+              //[self.navigationController popViewControllerAnimated:YES];
+              [self dismissViewControllerAnimated:true completion:nil];
+          }
+      }];
+}
 //- (IBAction)tweetBotton:(id)sender {
-//    [[APIManager shared]postStatusWithText:@"This is my tweet 😀" completion:^(Tweet *tweet, NSError *error) {
-//        if(error){
-//            NSLog(@"Error composing Tweet: %@", error.localizedDescription);
-//        }
-//        else{
-//            [self.delegate didTweet:tweet];
-//            NSLog(@"Compose Tweet Success!");
-//        }
-//    }];
+//
 //}
 
 - (void)viewDidLoad {

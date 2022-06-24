@@ -59,11 +59,22 @@
     
 }
 
+//[self fetchTweets];
+//    self.refreshControl = [[UIRefreshControl alloc] init];//connects refreshcontrol to self
+//    [self.refreshControl addTarget:self action: @selector(fetchTweets) forControlEvents:UIControlEventValueChanged];//when beginning of refresh control is triggered it reruns fetchMovies
+//    self.timelineTableView.refreshControl = self.refreshControl;//end of refreshControl
+//
+//
+//-(void)freshtweet{
+//    
+//}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     Tweet *tweet = self.tweetsArray[indexPath.row];
 //    cell.profilePicture.image=TweetCell
     cell.tweet = tweet;
+    
     cell.tweetTextLabel.text=tweet.text;
     cell.userLabel.text=tweet.user.name;
     cell.usernameLabel.text=tweet.user.screenName;
@@ -131,7 +142,7 @@
 
 
 - (void)didTweet:(nonnull Tweet *)tweet {
-    
+    [self.tweetsArray insertObject:tweet atIndex:0];
 }
 
 @end
